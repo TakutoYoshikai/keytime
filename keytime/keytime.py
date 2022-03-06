@@ -4,23 +4,23 @@ import sys
 
 class KeyTimeLogger:
     def __init__(self, max_sec):
-        self.recorded_time = 0
-        self.date = time.time()
-        self.max_sec = max_sec
-        self.hookman = pyxhook.HookManager()
-        self.hookman.KeyDown = self.key_event
-        self.hookman.HookKeyboard()
+        self.__recorded_time = 0
+        self.__date = time.time()
+        self.__max_sec = max_sec
+        self.__hookman = pyxhook.HookManager()
+        self.__hookman.KeyDown = self.key_event
+        self.__hookman.HookKeyboard()
     def start(self):
-        self.hookman.start()
+        self.__hookman.start()
     def stop(self):
-        self.hookman.cancel()
-        return self.recorded_time
+        self.__hookman.cancel()
+        return self.__recorded_time
     def key_event(self, event):
         now = time.time()
-        diff = now - self.date
-        if diff <= self.max_sec:
-            self.recorded_time = self.recorded_time + diff
-        self.date = now
+        diff = now - self.__date
+        if diff <= self.__max_sec:
+            self.__recorded_time = self.__recorded_time + diff
+        self.__date = now
 
 def main():
     logger = KeyTimeLogger(3)
