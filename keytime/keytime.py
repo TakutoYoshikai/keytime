@@ -11,6 +11,7 @@ class KeyTimeLogger:
         self.__hookman.KeyDown = self.key_event
         self.__hookman.HookKeyboard()
     def start(self):
+        self.__recorded_time = 0
         self.__hookman.start()
     def stop(self):
         self.__hookman.cancel()
