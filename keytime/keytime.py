@@ -3,7 +3,7 @@ import time
 import sys
 
 class KeyTimeLogger:
-    def __init__(self, max_sec):
+    def __init__(self, max_sec=20):
         self.recorded_time = 0
         self.date = time.time()
         self.max_sec = max_sec
@@ -23,7 +23,7 @@ class KeyTimeLogger:
         self.date = now
 
 def main():
-    logger = KeyTimeLogger(3)
+    logger = KeyTimeLogger()
     logger.start()
     sec = int(sys.argv[1])
     time.sleep(sec)
